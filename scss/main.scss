@@ -13,7 +13,44 @@ footer.footer {
  bottom: 0;
  width: 100%;
 }
-p{
+p {
 font-family: $font-family-serif;
 font-size: 18px;
+}
+
+.hero-scene {
+  position: relative;
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+background-image: url('../images/FondHeroScene.jpg');
+
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3);
+    z-index: 1;
+  }
+
+  .hero-scene-content {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+* {
+  //positionner les element devant le :: berfore
+  position: relative;
+}
+.hero-scene-content {
+height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
