@@ -12027,4 +12027,27 @@ p {
 
 .text-justify {
   text-align: justify;
+}
+
+.img-card {
+  position: relative;
+}
+.img-card:hover .titre-image {
+  opacity: 1;
+}
+.img-card:hover img {
+  filter: brightness(0.3);
+  transform: scale(1.05);
+}
+.img-card img {
+  transition: filter 0.3s ease, transform 0.3s ease;
+  display: block;
+}
+.img-card .titre-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }/*# sourceMappingURL=main.css.map */
