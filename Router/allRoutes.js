@@ -4,6 +4,7 @@ export const allRoutes = [
   new Route("/", "Accueil", "/pages/home.html"),
   new Route("/galerie", "Galerie", "/pages/galerie.html"),
   new Route("/signin", "Se Connecter", "/pages/signin.html"),
+  new Route("/signup", "S'inscrire", "/pages/signup.html"),
 ];
 
 // le titre s affichera ici 
