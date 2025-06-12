@@ -11981,7 +11981,7 @@ html {
 }
 
 main {
-  margin-bottom: 250px;
+  margin-bottom: 270px;
 }
 
 footer.footer {
@@ -12033,7 +12033,8 @@ p {
 .img-card {
   position: relative;
 }
-.img-card:hover .titre-image {
+.img-card:hover .titre-image,
+.img-card:hover .action-image-buttons {
   opacity: 1;
 }
 .img-card:hover img {
@@ -12049,6 +12050,17 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.img-card .action-image-buttons {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
