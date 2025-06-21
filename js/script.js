@@ -1,4 +1,10 @@
 const tokenCookieName = 'accesstoken';
+const signOutBtn = document.getElementById('signout-btn');
+signOutBtn.addEventListener('click',signout);
+function signout(){
+    eraseCookie(tokenCookieName);
+    window.location.reload();
+}
 function setToken(token){
     // Set the token in a cookie
     setCookie(tokenCookieName, token, 7); // Expires in 7 days
@@ -44,9 +50,10 @@ if (getToken() === null || getToken() === undefined ){
         return true;
     }
 }
-
+/*
 if (isConnected()) {
 alert('je suis connecté');
 } else {
 alert('je ne suis pas connecté');
 }
+*/
