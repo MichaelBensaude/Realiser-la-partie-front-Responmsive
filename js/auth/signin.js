@@ -11,11 +11,11 @@ function checkCredential() {
       // Simulate successful login but in a real application, you would call an API to verify credentials
     const token = 'jskdfldsjfklreyuiyrieoyriewyryeibcxnvbncxvnb';
     setToken(token)
-       window.location.replace('/');
-       //placer le toker en cookie ou localStorage
-     
-
-   } else {
+      //placer le toker en cookie ou localStorage
+   setCookie(roleCookieName,"client",7);
+   window.location.replace('/');
+     }
+      else {
        mailInput.classList.add('is-invalid');
        passwordInput.classList.add('is-invalid');
    }
