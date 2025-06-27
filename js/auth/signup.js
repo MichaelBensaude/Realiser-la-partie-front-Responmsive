@@ -5,11 +5,15 @@ const inputEmail = document.getElementById("EmailInput");
 const inputPassword = document.getElementById("PasswordInput"); // correction ici
 const inputConfirmPassword = document.getElementById("ConfirmPasswordInput"); // correction ici
 const btnValidation = document.getElementById("btn-validation-inscription");
-
+const formInscription = document.getElementById("formulaire-inscription");
 // add event listeners to inputs to validate form on keyup
-[inputNom, inputPrenom, inputEmail, inputPassword, inputConfirmPassword].forEach(input => {
-    input.addEventListener("keyup", validateForm);
-});
+inputNom.addEventListener("keyup", validateForm);
+inputPrenom.addEventListener("keyup", validateForm);
+inputEmail.addEventListener("keyup", validateForm);
+inputPassword.addEventListener("keyup", validateForm);
+inputConfirmPassword.addEventListener("keyup", validateForm);
+
+btnValidation.addEventListener("click", InscrireUtilisateur);
 
 // écoute de mes input
 function validateForm() {
@@ -76,4 +80,44 @@ function validateRequired(input) {
         input.classList.add("is-invalid");
         return false;
     }
+
+}
+
+function InscrireUtilisateur(){
+    const dataForm = new FormData(formInscription);
+
+    const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const raw = JSON.stringify({
+  "firstName": dataForm.get("prenom"),
+  "lastName": dataForm.get("nom"),
+  "email": dataForm.get("email"),
+  "password": dataForm.get("password")
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+console.log("Données envoyées :", raw);
+
+fetch("http://127.0.0.1:8000/api/registration", requestOptions)
+  .then((response) => {
+    if(response.ok){
+        return response.json();
+    }
+    else {
+        alert("Erreur lors de l'inscription. Veuillez vérifier vos informations.");
+    }
+
+  })
+  .then((result) => {
+    alert("Bravo " + dataForm.get("prenom") + ", inscription réussie, vous pouvez maintenant vous connecter.");
+    document.location.href="/signin";
+
+  })
+  .catch((error) => console.error("Erreur", error));
 }
