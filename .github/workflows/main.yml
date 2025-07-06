@@ -13,15 +13,17 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.samkirkland.com
-          username: myFtpUserName
+          server: mi3-sr24.supercp.com
+          username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /www/
           protocol: ftps
-          security: strict
+          port: 21
+          server-dir: /www/
+          local-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
+          log-level: verbose
